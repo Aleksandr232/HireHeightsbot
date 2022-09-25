@@ -1,0 +1,17 @@
+{
+  "name": "hireheightsbot",
+  "version": "1.0.0",
+  "description": "Аренда высоты ",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "author": "AleksM",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.2",
+    "nodemon": "^2.0.20",
+    "telegraf": "^4.9.2"
+  }
+}
