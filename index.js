@@ -12,93 +12,7 @@ bot.start((ctx) =>
 );
 bot.hears("Привет", (ctx) => ctx.reply("Привет, хорошего дня!"));
 
-bot.hears("Выбор", async (ctx) => {
-  try {
-    ctx.replyWithPhoto({ source: "./img/choice.jpg" });
-  } catch (e) {
-    console.error(e);
-  }
-});
 
-bot.hears("Позиция", async (ctx) => {
-  try {
-    ctx.replyWithPhoto({ source: "./img/people.jpg" });
-  } catch (e) {
-    console.error(e);
-  }
-});
-
-bot.hears("События", async (ctx) => {
-  try {
-    ctx.replyWithPhoto({ source: "./img/developments.jpg" });
-  } catch (e) {
-    console.error(e);
-  }
-});
-
-bot.hears("Жертва", async (ctx) => {
-  try {
-    ctx.replyWithPhoto({ source: "./img/victim.jpg" });
-  } catch (e) {
-    console.error(e);
-  }
-});
-
-bot.hears("Роль", async (ctx) => {
-  try {
-    ctx.replyWithPhoto({ source: "./img/role.jpg" });
-  } catch (e) {
-    console.error(e);
-  }
-});
-
-bot.hears("Страхи", async (ctx) => {
-  try {
-    ctx.replyWithPhoto({ source: "./img/fears.jpg" });
-  } catch (e) {
-    console.error(e);
-  }
-});
-
-bot.hears("Дыхание", async (ctx) => {
-  try {
-    ctx.replyWithPhoto({ source: "./img/breath.jpg" });
-  } catch (e) {
-    console.error(e);
-  }
-});
-
-bot.hears("Cтоп", async (ctx) => {
-  try {
-    ctx.replyWithPhoto({ source: "./img/stop.jpg" });
-  } catch (e) {
-    console.error(e);
-  }
-});
-
-bot.hears("Быть", async (ctx) => {
-  try {
-    ctx.replyWithPhoto({ source: "./img/tobe.jpg" });
-  } catch (e) {
-    console.error(e);
-  }
-});
-
-bot.hears("Управляю", async (ctx) => {
-  try {
-    ctx.replyWithPhoto({ source: "./img/manage.jpg" });
-  } catch (e) {
-    console.error(e);
-  }
-});
-
-bot.hears("Цель", async (ctx) => {
-  try {
-    ctx.replyWithPhoto({ source: "./img/goal.jpg" });
-  } catch (e) {
-    console.error(e);
-  }
-});
 
 bot.help((ctx) => ctx.reply(commBot.commands));
 bot.command("coder", async (ctx) => {
@@ -109,26 +23,52 @@ bot.command("coder", async (ctx) => {
   }
 });
 
+bot.command("site", (ctx) => {
+  ctx.replyWithHTML('<a href="https://xn--80aagge2ckkol0hd.xn--p1ai/">Наш сайт</a>');
+});
+
+bot.hears("Сайт", (ctx)=>{
+  ctx.replyWithHTML('<a href="https://xn--80aagge2ckkol0hd.xn--p1ai/">Наш сайт</a>');
+})
+
+bot.hears("Контакты", async (ctx) =>{  
+  try {
+    await ctx.replyWithContact('+79600625525', 'Аренда Высоты')
+    await ctx.replyWithHTML('<a href="https://yandex.ru/maps/43/kazan/house/ulitsa_mirkhaydara_fayzi_68/YEAYdAJpQUUGQFtvfXtycHhlYQ==/?ll=49.259802%2C55.731465&z=16">Карта</a>')
+   } catch (e) {
+     console.error(e);
+   }
+});
+
+bot.hears("Строительные леса", async (ctx) =>{  
+  try {
+    await ctx.replyWithHTML('<b>Предназначены для отделки стен и потолков внутри зданий, а также для отделочных и ремонтных работ на фасадах зданий. Имеют простую конструкцию на флажковых замках и при сборке не требуют специальных инструментов. Считаются легкими и надежными так как используется труба диаметром 42мм, а двойное ограждение гарантирует безопасность при строительных работах</b>')
+    await ctx.replyWithDocument({source: 'files/Леса.xlsx'})
+   } catch (e) {
+     console.error(e);
+   }
+});
+
+bot.hears("Вышки-туры", async (ctx) =>{  
+  try {
+    await ctx.replyWithHTML('<b>Предлагаем в аренду передвижные строительные вышки-туры «Балатон» высотой от 2-х до 21,3 метра. Вышка-тура «Балатон» считается лидером среди конкурентов. Отличается устойчивостью и безопасностью. Производится из лучших марок стали. Подходит для наружных и внутренних строительных работ</b>')
+    await ctx.replyWithDocument({source: 'files/Вышки-туры.xlsx'})
+   } catch (e) {
+     console.error(e);
+   }
+});
+
 bot.command("menu", async (ctx) => {
   try {
     await ctx.replyWithHTML(
       "<b>Меню</b>",
       Markup.inlineKeyboard([
         [
-          Markup.button.callback("Выбор", "btn_1"),
-          Markup.button.callback("Позиция", "btn_2"),
-          Markup.button.callback("События", "btn_3"),
-          Markup.button.callback("Жертва", "btn_4"),
-        ],
-        [
-          Markup.button.callback("Управляю", "btn_5"),
-          Markup.button.callback("Быть", "btn_6"),
-          Markup.button.callback("Cтоп", "btn_7"),
-          Markup.button.callback("Дыхание", "btn_8"),
-          Markup.button.callback("Роль", "btn_9"),
-          Markup.button.callback("Страхи", "btn_10"),
-        ],
-        [Markup.button.callback("Цель", "btn_11")],
+          Markup.button.callback("", "btn_1"),
+          Markup.button.callback("", "btn_2"),
+          Markup.button.callback("", "btn_3"),
+          Markup.button.callback("", "btn_4"),
+        ]
       ])
     );
   } catch (e) {
@@ -136,93 +76,7 @@ bot.command("menu", async (ctx) => {
   }
 });
 
-bot.action("btn_1", async (ctx) => {
-  try {
-    ctx.replyWithPhoto({ source: "./img/choice.jpg" });
-  } catch (e) {
-    console.error(e);
-  }
-});
 
-bot.action("btn_2", (ctx) => {
-  try {
-    ctx.replyWithPhoto({ source: "./img/people.jpg" });
-  } catch (e) {
-    console.error(e);
-  }
-});
-
-bot.action("btn_3", async (ctx) => {
-  try {
-    ctx.replyWithPhoto({ source: "./img/developments.jpg" });
-  } catch (e) {
-    console.error(e);
-  }
-});
-
-bot.action("btn_4", async (ctx) => {
-  try {
-    ctx.replyWithPhoto({ source: "./img/victim.jpg" });
-  } catch (e) {
-    console.error(e);
-  }
-});
-
-bot.action("btn_5", async (ctx) => {
-  try {
-    ctx.replyWithPhoto({ source: "./img/manage.jpg" });
-  } catch (e) {
-    console.error(e);
-  }
-});
-
-bot.action("btn_6", async (ctx) => {
-  try {
-    ctx.replyWithPhoto({ source: "./img/tobe.jpg" });
-  } catch (e) {
-    console.error(e);
-  }
-});
-
-bot.action("btn_7", async (ctx) => {
-  try {
-    ctx.replyWithPhoto({ source: "./img/stop.jpg" });
-  } catch (e) {
-    console.error(e);
-  }
-});
-
-bot.action("btn_8", async (ctx) => {
-  try {
-    ctx.replyWithPhoto({ source: "./img/breath.jpg" });
-  } catch (e) {
-    console.error(e);
-  }
-});
-
-bot.action("btn_9", async (ctx) => {
-  try {
-    ctx.replyWithPhoto({ source: "./img/role.jpg" });
-  } catch (e) {
-    console.error(e);
-  }
-});
-
-bot.action("btn_10", async (ctx) => {
-  try {
-    ctx.replyWithPhoto({ source: "./img/fears.jpg" });
-  } catch (e) {
-    console.error(e);
-  }
-});
-
-bot.action("btn_11", async (ctx) => {
-  try {
-    ctx.replyWithPhoto({ source: "./img/goal.jpg" });
-  } catch (e) {
-    console.error(e);
-  }
-});
 
 bot.launch();
 
