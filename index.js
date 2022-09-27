@@ -2,7 +2,7 @@ const { Telegraf, Markup, Composer } = require("telegraf");
 require("dotenv").config();
 const commBot = require("./const");
 
-const bot = new Telegraf(process.env.BOT_TOKEN);
+const bot = new Telegraf('5788962599:AAEAxe_dTet2xn9f3FEHfsuJnfJqGnd-Kj0');
 bot.start((ctx) =>
   ctx.reply(
     `Привествуем, ${
