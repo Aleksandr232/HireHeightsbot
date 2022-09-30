@@ -14,9 +14,10 @@ bot.start(async(ctx) =>{
   );
 try{
 await ctx.reply('Услуги', Markup.keyboard([
-  ['Вышки-туры', 'Минитрактор', 'Грузоперевозки'],
+  ['Вышки-туры', 'Минитрактор'],
   ['Строительные леса'],
-  ['Уборка снега с крыш']
+  ['Уборка снега с крыш'],
+  ['Грузоперевозки']
 
   
 ]).oneTime().resize())
@@ -46,9 +47,7 @@ bot.command("prompt", async (ctx) => {
   }
 });
 
-bot.command("site", (ctx) => {
-  ctx.replyWithHTML('<a href="https://xn--80aagge2ckkol0hd.xn--p1ai/">Наш сайт</a>');
-});
+
 
 bot.hears("Сайт", (ctx)=>{
   ctx.replyWithHTML('<a href="https://xn--80aagge2ckkol0hd.xn--p1ai/">Наш сайт</a>');
@@ -63,7 +62,7 @@ bot.hears("Контакты", async (ctx) =>{
    }
 });
 
-bot.hears("Строительные леса", async (ctx) =>{  
+bot.hears('Строительные леса', async (ctx) =>{  
   try {
     await ctx.replyWithPhoto("https://арендавысоты.рф/frontend/img/gallery/adelya-kutuya.jpg")
     await ctx.replyWithHTML('<b>Предназначены для отделки стен и потолков внутри зданий, а также для отделочных и ремонтных работ на фасадах зданий. Имеют простую конструкцию на флажковых замках и при сборке не требуют специальных инструментов. Считаются легкими и надежными так как используется труба диаметром 42мм, а двойное ограждение гарантирует безопасность при строительных работах</b>')
@@ -72,6 +71,17 @@ bot.hears("Строительные леса", async (ctx) =>{
      console.error(e);
    }
 });
+
+bot.hears('Услуги', async (ctx)=>{
+  await ctx.reply('Услуги', Markup.keyboard([
+    ['Вышки-туры', 'Минитрактор'],
+    ['Строительные леса'],
+    ['Уборка снега с крыш'],
+    ['Грузоперевозки']
+  
+    
+  ]).oneTime().resize())
+})
 
 bot.hears("Вышки-туры", async (ctx) =>{  
   try {
@@ -133,16 +143,16 @@ bot.hears("Минитрактор", async (ctx) =>{
 
 
 
-bot.command("menu", async (ctx) => {
+bot.command("info", async (ctx) => {
   try {
     await ctx.replyWithHTML(
-      "<b>Меню</b>",
+      "<b>Информация</b>",
       Markup.inlineKeyboard([
         [
-          Markup.button.callback("", "btn_1"),
-          Markup.button.callback("", "btn_2"),
-          Markup.button.callback("", "btn_3"),
-          Markup.button.callback("", "btn_4"),
+          Markup.button.callback("Фото", "btn_1"),
+          Markup.button.callback("Контакты", "btn_2"),
+          Markup.button.callback("Instagram", "btn_3"),
+          Markup.button.callback("Сайт", "btn_4")
         ]
       ])
     );
@@ -151,6 +161,48 @@ bot.command("menu", async (ctx) => {
   }
 });
 
+bot.action('btn_1', async (ctx)=>{
+  try{
+    await ctx.replyWithPhoto('https://арендавысоты.рф/frontend/img/gallery/baumana.jpg');
+    await ctx.replyWithPhoto('https://арендавысоты.рф/frontend/img/gallery/malyye-mabany.jpg');
+    await ctx.replyWithPhoto('https://арендавысоты.рф/frontend/img/gallery/adelya-kutuya.jpg');
+    await ctx.replyWithPhoto('https://арендавысоты.рф/frontend/img/gallery/school-gabishevo.jpg');
+    await ctx.replyWithPhoto('https://арендавысоты.рф/frontend/img/gallery/vysokaya-gora.jpg');
+    await ctx.replyWithPhoto('https://арендавысоты.рф/frontend/img/gallery/novoye-shigaleyevo.jpg');
+    await ctx.replyWithPhoto('https://арендавысоты.рф/frontend/img/gallery/rodiny.jpg');
+    await ctx.replyWithPhoto('https://арендавысоты.рф/frontend/img/gallery/gabishevo.jpg');
+    await ctx.replyWithPhoto('https://арендавысоты.рф/frontend/img/gallery/kazan-moll.jpg');
+    await ctx.replyWithPhoto('https://арендавысоты.рф/frontend/img/gallery/kazanskiy-kreml.jpg');
+    await ctx.replyWithPhoto('https://арендавысоты.рф/frontend/img/gallery/peschanyye-kovali.jpg');
+  }catch(e){
+    console.log(e)
+  }
+})
+
+bot.action('btn_2', async (ctx)=>{
+  try{
+    await ctx.replyWithContact('+79600625525', 'Аренда Высоты')
+    await ctx.replyWithHTML('<a href="https://yandex.ru/maps/43/kazan/house/ulitsa_mirkhaydara_fayzi_68/YEAYdAJpQUUGQFtvfXtycHhlYQ==/?ll=49.259802%2C55.731465&z=16">Карта</a>')
+  }catch(e){
+    console.log(e)
+  }
+})
+
+bot.action('btn_3', async (ctx) =>{
+  try{
+    await ctx.replyWithHTML('<a href="https://instagram.com/arenda_visoti?igshid=YmMyMTA2M2Y=">Подписывайся</a>')
+  }catch(e){
+    console.log(e)
+  }
+})
+
+bot.action('btn_4', async (ctx)=>{
+  try{
+    await ctx.replyWithHTML('<a href="https://xn--80aagge2ckkol0hd.xn--p1ai/">Наш сайт</a>');
+  }catch(e){
+    console.log(e)
+  }
+})
 
 
 bot.launch();

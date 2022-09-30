@@ -1,7 +1,7 @@
 const commands = `
 /start - Запустить бота 
 /help - Помощь
-/menu - Меню
+/info - Информация
 /coder - Кодер
 /prompt - Подсказка
 `
