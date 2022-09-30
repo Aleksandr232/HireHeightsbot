@@ -1,15 +1,30 @@
-const { Telegraf, Markup, Composer } = require("telegraf");
+const { Telegraf, Markup, Composer, Scenes, session } = require("telegraf");
 require("dotenv").config();
 const commBot = require("./const");
 
 const bot = new Telegraf('5788962599:AAEAxe_dTet2xn9f3FEHfsuJnfJqGnd-Kj0');
-bot.start((ctx) =>
-  ctx.reply(
+
+
+
+bot.start(async(ctx) =>{
+ await ctx.reply(
     `Привествуем, ${
       ctx.message.from.first_name ? ctx.message.from.first_name : ""
     }, предлагаем в аренду рамные строительные леса, строительные вышки-туры, раздвижные лестницы. Дополнительно оказываем услуги на минитракторе МКСМ, а также услуги строительного альпинизма по очистке снега с крыш. Осуществляем доставку оборудования нашим автотранспортом по Казани и Республике Татарстан`
-  )
-);
+  );
+try{
+await ctx.reply('Услуги', Markup.keyboard([
+  ['Вышки-туры', 'Минитрактор', 'Грузоперевозки'],
+  ['Строительные леса'],
+  ['Уборка снега с крыш']
+
+  
+]).oneTime().resize())
+}catch(e){
+  console.log(e)
+}  
+  });
+
 bot.hears("Привет", (ctx) => ctx.reply("Привет, хорошего дня!"));
 
 
