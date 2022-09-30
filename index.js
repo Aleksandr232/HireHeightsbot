@@ -75,6 +75,14 @@ bot.hears('привет', async (ctx) =>{
   }
 }); 
 
+bot.hears("👋", async (ctx) =>{
+  try{
+    await ctx.reply("Привет")
+  }catch(e){
+    console.log(e)
+  }
+}); 
+
 
 
 
