@@ -26,7 +26,55 @@ await ctx.reply('Услуги', Markup.keyboard([
 }  
   });
 
+
+bot.hears("Добрый день", (ctx)=>ctx.reply(`Добрый день, ${ctx.message.from.first_name ? ctx.message.from.first_name : ""}`))
+bot.hears("Добрый вечер", (ctx)=>ctx.reply(`И вам добрый вечер, ${ctx.message.from.first_name ? ctx.message.from.first_name : ""} самое время посмотреть наши услуги`))
 bot.hears("Привет", (ctx) => ctx.reply("Привет, хорошего дня!"));
+bot.hears('Благодарю', async (ctx) =>{
+  try{
+    await ctx.reply("🙏")
+  }catch(e){
+    console.log(e)
+  }
+}); 
+
+bot.hears('Благодарю, тебя', async (ctx) =>{
+  try{
+    await ctx.reply("🙏")
+  }catch(e){
+    console.log(e)
+  }
+}); 
+bot.hears('благодарю', async (ctx) =>{
+  try{
+    await ctx.reply("🙏")
+  }catch(e){
+    console.log(e)
+  }
+}); 
+bot.hears('Спасибо', async (ctx) =>{
+  try{
+    await ctx.reply("👐")
+  }catch(e){
+    console.log(e)
+  }
+}); 
+bot.hears('спасибо', async (ctx) =>{
+  try{
+    await ctx.reply("🤝")
+  }catch(e){
+    console.log(e)
+  }
+}); 
+
+bot.hears('привет', async (ctx) =>{
+  try{
+    await ctx.reply("👋")
+  }catch(e){
+    console.log(e)
+  }
+}); 
+
 
 
 
