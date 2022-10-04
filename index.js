@@ -27,6 +27,8 @@ await ctx.reply('Услуги', Markup.keyboard([
   });
 
 
+
+
 bot.hears("Добрый день", (ctx)=>ctx.reply(`Добрый день, ${ctx.message.from.first_name ? ctx.message.from.first_name : ""}`))
 bot.hears("Добрый вечер", (ctx)=>ctx.reply(`И вам добрый вечер, ${ctx.message.from.first_name ? ctx.message.from.first_name : ""} самое время посмотреть наши услуги`))
 bot.hears("Привет", (ctx) => ctx.reply("Привет, хорошего дня!"));
