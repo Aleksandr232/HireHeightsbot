@@ -323,6 +323,24 @@ bot.hears("Вышки-туры фото", async (ctx) => {
     await ctx.replyWithPhoto(
       "https://арендавысоты.рф/frontend/img/gallery/kazan-moll.jpg"
     );
+    await ctx.replyWithPhoto(
+      "https://арендавысоты.рф/frontend/img/gallery/laishevo.jpg"
+    );
+    await ctx.replyWithPhoto(
+      "https://арендавысоты.рф/frontend/img/gallery/salmachi.jpg"
+    );
+    await ctx.replyWithPhoto(
+      "https://арендавысоты.рф/frontend/img/gallery/kuzemetevskoe.jpg"
+    );
+    await ctx.replyWithPhoto(
+      "https://арендавысоты.рф/frontend/img/gallery/usady.jpg"
+    );
+    await ctx.replyWithPhoto(
+      "https://арендавысоты.рф/frontend/img/gallery/kabany.jpg"
+    )
+    await ctx.replyWithPhoto(
+      "https://арендавысоты.рф/frontend/img/gallery/our-storage-salmachi.jpg"
+    )
   } catch (e) {
     console.log(e);
   }
