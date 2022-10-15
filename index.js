@@ -1,9 +1,10 @@
 const { Telegraf, Markup, Composer, Scenes, session } = require("telegraf");
+
 require("dotenv").config();
 const commBot = require("./const");
 
 const bot = new Telegraf("5788962599:AAEAxe_dTet2xn9f3FEHfsuJnfJqGnd-Kj0");
-const webAppUrl='https://github.com/Aleksandr232'
+const webAppUrl='/'
 
 bot.start(async (ctx) => {
   await ctx.reply(
@@ -147,14 +148,11 @@ bot.hears("Услуги", async (ctx) => {
 });
 
 bot.hears("Отправить заявку", async (ctx) => {
- await ctx.reply(
-       'Заявка',
-       Markup.keyboard([
-        [
-          Markup.button.callback("Отправить", webAppUrl )
-        ]
-      ])
-)});
+  await ctx.replyWithHTML('<b>Заявка</b>',
+   Markup.inlineKeyboard([
+    Markup.button.webApp('Отправить заявку', 'https://github.com/Aleksandr232' )
+   ])
+ )});
 
 bot.hears("Вышки-туры", async (ctx) => {
   try {
