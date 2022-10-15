@@ -255,7 +255,7 @@ bot.command("info", async (ctx) => {
           Markup.button.callback("Фото", "btn_1"),
           Markup.button.callback("Контакты", "btn_2"),
           Markup.button.callback("Instagram", "btn_3"),
-          Markup.button.callback("Сайт", "btn_4"),
+          Markup.button.webApp("Сайт", "https://xn--80aagge2ckkol0hd.xn--p1ai/%D0%B2%D1%8B%D1%88%D0%BA%D0%B8-%D1%82%D1%83%D1%80%D1%8B"),
         ],
       ])
     );
