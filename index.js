@@ -4,7 +4,7 @@ require("dotenv").config();
 const commBot = require("./const");
 
 const bot = new Telegraf("5788962599:AAEAxe_dTet2xn9f3FEHfsuJnfJqGnd-Kj0");
-const webAppUrl='https://github.com/Aleksandr232'
+const webAppUrl='https://arenda-1fqgj13fa-aleksandr232.vercel.app/'
 
 bot.start(async (ctx) => {
   await ctx.reply(
