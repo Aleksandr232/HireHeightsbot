@@ -3,6 +3,7 @@ require("dotenv").config();
 const commBot = require("./const");
 
 const bot = new Telegraf("5788962599:AAEAxe_dTet2xn9f3FEHfsuJnfJqGnd-Kj0");
+const webAppUrl='https://github.com/Aleksandr232'
 
 bot.start(async (ctx) => {
   await ctx.reply(
@@ -144,6 +145,16 @@ bot.hears("Услуги", async (ctx) => {
       .resize()
   );
 });
+
+bot.hears("Отправить заявку", async (ctx) => {
+ await ctx.reply(
+       'Заявка',
+       Markup.keyboard([
+        [
+          Markup.button.callback("Отправить", webAppUrl )
+        ]
+      ])
+)});
 
 bot.hears("Вышки-туры", async (ctx) => {
   try {
