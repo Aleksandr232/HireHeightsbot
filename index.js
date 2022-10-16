@@ -25,7 +25,25 @@ await ctx.reply('Используй в чате символ / и откроют
 }catch(e){
   console.log(e)
 }  
-  });
+  
+if(ctx?.webAppData?.data){
+  try{
+    const data = JSON.parse(ctx?.webAppData?.data)
+    await bot.sendMessage(chatId, 'sdfsd')
+    await bot.sendMessage(chatId, 'sdfsd' + data?.name);
+    await bot.sendMessage( 'sdfsd' + data?.surname);
+     
+    setTimeout(async()=>{
+      await bot.sendMessage('sdfsd' + data?.surname);
+    }, 3000)
+
+  }catch(e){
+    console.log(e)
+  }
+ 
+}
+
+});
 
 
 bot.hears("Добрый день", (ctx)=>ctx.reply(`Добрый день, ${ctx.message.from.first_name ? ctx.message.from.first_name : ""}`))
