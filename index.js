@@ -7,6 +7,24 @@ const bot = new Telegraf("5788962599:AAEAxe_dTet2xn9f3FEHfsuJnfJqGnd-Kj0");
 const webAppUrl='https://arenda.vercel.app/'
 
 bot.start(async (ctx) => {
+  const chatId = ctx.chat.id;
+  
+   if(ctx?.webAppData?.data) {
+    try {
+        const data = JSON.parse(ctx?.webAppData?.data)
+        console.log(data)
+        await bot.sendMessage(chatId, 'Спасибо за обратную связь!')
+        await bot.sendMessage(chatId, 'Ваша страна: ' + data?.name);
+        await bot.sendMessage(chatId, 'Ваша улица: ' + data?.surname);
+
+        setTimeout(async () => {
+            await bot.sendMessage(chatId, 'Всю информацию вы получите в этом чате');
+        }, 3000)
+    } catch (e) {
+        console.log(e);
+    }
+}
+
   await ctx.reply(
     `Привествуем, ${
       ctx.message.from.first_name ? ctx.message.from.first_name : ""
@@ -26,24 +44,29 @@ await ctx.reply('Используй в чате символ / и откроют
   console.log(e)
 }  
   
-if(ctx?.webAppData?.data){
-  try{
-    const data = JSON.parse(ctx?.webAppData?.data)
-    await bot.sendMessage(chatId, 'sdfsd')
-    await bot.sendMessage(chatId, 'sdfsd' + data?.name);
-    await bot.sendMessage( 'sdfsd' + data?.surname);
-     
-    setTimeout(async()=>{
-      await bot.sendMessage('sdfsd' + data?.surname);
-    }, 3000)
-
-  }catch(e){
-    console.log(e)
-  }
- 
-}
-
 });
+
+/* bot.on('message', async (msg) => {
+  const chatId = msg.chat.id;
+  const text = msg.text;
+  const data = msg?.webAppData?.data
+  
+  if(data) {
+      try {
+          const data = JSON.parse(data)
+          console.log(data)
+          await bot.sendMessage(chatId, 'Спасибо за обратную связь!')
+          await bot.sendMessage(chatId, 'Ваша страна: ' + data?.name);
+          await bot.sendMessage(chatId, 'Ваша улица: ' + data?.surname);
+
+          setTimeout(async () => {
+              await bot.sendMessage(chatId, 'Всю информацию вы получите в этом чате');
+          }, 3000)
+      } catch (e) {
+          console.log(e);
+      }
+  }
+}); */
 
 
 bot.hears("Добрый день", (ctx)=>ctx.reply(`Добрый день, ${ctx.message.from.first_name ? ctx.message.from.first_name : ""}`))
