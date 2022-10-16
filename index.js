@@ -1,10 +1,13 @@
 const { Telegraf, Markup, Composer, Scenes, session } = require("telegraf");
-
+const express = require('express');
 require("dotenv").config();
 const commBot = require("./const");
 
 const bot = new Telegraf("5788962599:AAEAxe_dTet2xn9f3FEHfsuJnfJqGnd-Kj0");
 const webAppUrl='https://arenda.vercel.app/'
+const app = express();
+
+app.use(express.json());
 
 bot.start(async (ctx) => {
   const chatId = ctx.chat.id;
