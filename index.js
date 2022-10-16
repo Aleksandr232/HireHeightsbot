@@ -31,12 +31,12 @@ await ctx.reply('Используй в чате символ / и откроют
   
 });
 
-bot.on('message', async(ctx)=>{
+bot.start('message', async(ctx)=>{
   const chatId = ctx.chat_id;
 
-if(ctx.reply(ctx.webAppData.data)){
+if(ctx.reply(ctx?.webAppData?.data)){
 try {
-    const data = JSON.parse(ctx.webAppData.data)
+    const data = JSON.parse(ctx?.webAppData?.data)
     console.log(data)
     await bot.sendMessage(chatId, 'Спасибо за обратную связь!')
     await bot.sendMessage(chatId, 'Ваше имя:' + data?.name);
