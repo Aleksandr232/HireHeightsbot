@@ -10,25 +10,6 @@ const app = express();
 app.use(express.json());
 
 bot.start( async (ctx) => {
-  bot.on('message', async(ctx)=>{
-    const chatId = ctx.chat.id;
-
- if(ctx?.webAppData?.data) {
-  try {
-      const data = JSON.parse(ctx?.webAppData?.data)
-      console.log(data)
-      await bot.sendMessage(chatId, 'Спасибо за обратную связь!')
-      await bot.sendMessage(chatId, 'Ваше имя: ' + data?.name);
-      await bot.sendMessage(chatId, 'Ваша фамилия: ' + data?.surname);
-
-      setTimeout(async () => {
-          await bot.sendMessage(chatId, 'Всю информацию вы получите в этом чате');
-      }, 3000)
-  } catch (e) {
-      console.log(e);
-  }
-}
-  })
   await ctx.reply(
     `Привествуем, ${
       ctx.message.from.first_name ? ctx.message.from.first_name : ""
@@ -50,25 +31,25 @@ await ctx.reply('Используй в чате символ / и откроют
   
 });
 
-/* bot.on('message', async(ctx) =>{
-  const chatId = msg.chat.id;
+bot.on('message', async(ctx)=>{
+  const chatId = ctx.chat_id;
 
- if(msg?.webAppData?.data) {
-  try {
-      const data = JSON.parse(msg?.webAppData?.data)
-      console.log(data)
-      await bot.sendMessage(chatId, 'Спасибо за обратную связь!')
-      await bot.sendMessage(chatId, 'Ваше имя: ' + data?.name);
-      await bot.sendMessage(chatId, 'Ваша фамилия: ' + data?.surname);
+if(ctx.reply(ctx.webAppData.data)){
+try {
+    const data = JSON.parse(ctx.webAppData.data)
+    console.log(data)
+    await bot.sendMessage(chatId, 'Спасибо за обратную связь!')
+    await bot.sendMessage(chatId, 'Ваше имя:' + data?.name);
+    await bot.sendMessage(chatId, 'Ваша фамилия:' + data?.surname);
 
-      setTimeout(async () => {
-          await bot.sendMessage(chatId, 'Всю информацию вы получите в этом чате');
-      }, 3000)
-  } catch (e) {
-      console.log(e);
-  }
+    setTimeout(async () => {
+        await bot.sendMessage(chatId, 'Всю информацию вы получите в этом чате');
+    }, 3000)
+} catch (e) {
+    console.log(e);
 }
-}) */
+
+}})
 
 
 bot.hears("Добрый день", (ctx)=>ctx.reply(`Добрый день, ${ctx.message.from.first_name ? ctx.message.from.first_name : ""}`))
