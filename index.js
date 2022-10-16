@@ -17,7 +17,8 @@ await ctx.reply('Используй в чате символ / и откроют
   ['Вышки-туры', 'Минитрактор'],
   ['Строительные леса'],
   ['Уборка снега с крыш'],
-  ['Грузоперевозки']
+  ['Грузоперевозки'],
+  [Markup.button.webApp('Отправить заявку', webAppUrl )]
 
   
 ]).oneTime().resize())
@@ -140,18 +141,22 @@ bot.hears("Услуги", async (ctx) => {
       ["Вышки-туры", "Минитрактор"],
       ["Строительные леса"],
       ["Уборка снега с крыш"],
-      ["Грузоперевозки"],
+      [Markup.button.webApp('Отправить заявку', webAppUrl )]
     ])
       .oneTime()
-      .resize()
+      .resize(),
   );
 });
 
 bot.hears("Отправить заявку", async (ctx) => {
-  await ctx.replyWithHTML('<b>Заявка</b>',
-   Markup.inlineKeyboard([
+  await ctx.reply(
+    'Заявка',
+    Markup.keyboard([
     Markup.button.webApp('Отправить заявку', webAppUrl )
    ])
+   .oneTime()
+   .resize()
+
  )});
 
 bot.hears("Вышки-туры", async (ctx) => {
