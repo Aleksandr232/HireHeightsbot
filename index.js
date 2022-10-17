@@ -31,21 +31,22 @@ await ctx.reply('Используй в чате символ / и откроют
   
 });
 
+
 bots.on('message', async(msg) => {
   const chatId = msg.chat.id;
   
 
 
-  if(msg?.web_app_data?.data) {
+  if(msg?.web_app_data?.data){
       try {
           const data = JSON.parse(msg?.web_app_data?.data)
           console.log(data)
-          await bot.sendMessage(chatId, 'Спасибо за обратную связь!')
-          await bot.sendMessage(chatId, 'Ваша страна: ' + data?.name);
-          await bot.sendMessage(chatId, 'Ваша улица: ' + data?.surname);
+          await bots.sendMessage(chatId, 'Спасибо за обратную связь!')
+          await bots.sendMessage(chatId, 'Ваша страна: ' + data?.name);
+          await bots.sendMessage(chatId, 'Ваша улица: ' + data?.surname);
 
           setTimeout( async() => {
-              await bot.sendMessage(chatId, 'Всю информацию вы получите в этом чате');
+              await bots.sendMessage(chatId, 'Всю информацию вы получите в этом чате');
           }, 3000)
       } catch (e) {
           console.log(e);
