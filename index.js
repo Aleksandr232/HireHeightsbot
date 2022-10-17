@@ -10,8 +10,8 @@ const bots = new TelegramBot("5788962599:AAEAxe_dTet2xn9f3FEHfsuJnfJqGnd-Kj0");
 app.use(express.json());
 
 bot.start( async (ctx) => { 
-  bot.on('text', (ctx)=>{
-    ctx.reply('Чем могу помочь?',/* Markup.inlineKeyboard([
+  bot.on('text', async (ctx)=>{
+  await ctx.replyWithHTML('<b>Чем могу помочь?</b>',Markup.inlineKeyboard([
      [
        Markup.button.callback("Фото", "btn_1"),
        Markup.button.callback("Контакты", "btn_2"),
@@ -20,7 +20,7 @@ bot.start( async (ctx) => {
        Markup.button.callback("Новости", "btn_6")
      ],  
      [Markup.button.callback("Услуги", "btn_5")]
-   ]) */
+   ])
   )})     
   await ctx.reply(
     `Привествуем, ${
