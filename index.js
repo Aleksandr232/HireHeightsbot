@@ -1,12 +1,12 @@
 const { Telegraf, Markup, Composer, Scenes, session } = require("telegraf");
+const  TelegramBot  =  require ( 'node-telegram-bot-api' ) ;
 const express = require('express');
 require("dotenv").config();
 const commBot = require("./const");
-
 const bot = new Telegraf("5788962599:AAEAxe_dTet2xn9f3FEHfsuJnfJqGnd-Kj0");
 const webAppUrl='https://arenda.vercel.app/'
 const app = express();
-
+const bots = new TelegramBot("5788962599:AAEAxe_dTet2xn9f3FEHfsuJnfJqGnd-Kj0");
 app.use(express.json());
 
 bot.start( async (ctx) => {
@@ -31,25 +31,30 @@ await ctx.reply('Используй в чате символ / и откроют
   
 });
 
-bot.start('message', async(ctx)=>{
-  const chatId = ctx.chat_id;
+bots.on('message', async(msg) => {
+  const chatId = msg.chat.id;
+  
 
-if(ctx.reply(ctx?.webAppData?.data)){
-try {
-    const data = JSON.parse(ctx?.webAppData?.data)
-    console.log(data)
-    await bot.sendMessage(chatId, 'Спасибо за обратную связь!')
-    await bot.sendMessage(chatId, 'Ваше имя:' + data?.name);
-    await bot.sendMessage(chatId, 'Ваша фамилия:' + data?.surname);
 
-    setTimeout(async () => {
-        await bot.sendMessage(chatId, 'Всю информацию вы получите в этом чате');
-    }, 3000)
-} catch (e) {
-    console.log(e);
-}
+  if(msg?.web_app_data?.data) {
+      try {
+          const data = JSON.parse(msg?.web_app_data?.data)
+          console.log(data)
+          await bot.sendMessage(chatId, 'Спасибо за обратную связь!')
+          await bot.sendMessage(chatId, 'Ваша страна: ' + data?.name);
+          await bot.sendMessage(chatId, 'Ваша улица: ' + data?.surname);
 
-}})
+          setTimeout( async() => {
+              await bot.sendMessage(chatId, 'Всю информацию вы получите в этом чате');
+          }, 3000)
+      } catch (e) {
+          console.log(e);
+      }
+  }
+});
+
+
+
 
 
 bot.hears("Добрый день", (ctx)=>ctx.reply(`Добрый день, ${ctx.message.from.first_name ? ctx.message.from.first_name : ""}`))
