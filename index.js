@@ -11,7 +11,7 @@ app.use(express.json());
 
 bot.start( async (ctx) => { 
   bot.on('text', async (ctx)=>{
-  await ctx.replyWithHTML('<b>Чем могу помочь?</b>',Markup.inlineKeyboard([
+  if (await ctx.replyWithHTML('<b>Чем могу помочь?</b>',Markup.inlineKeyboard([
      [
        Markup.button.callback("Фото", "btn_1"),
        Markup.button.callback("Контакты", "btn_2"),
@@ -21,7 +21,11 @@ bot.start( async (ctx) => {
      ],  
      [Markup.button.callback("Услуги", "btn_5")]
    ])
-  )})     
+  ));
+   else{
+    ctx.reply('Привет')
+   }
+})     
   await ctx.reply(
     `Привествуем, ${
       ctx.message.from.first_name ? ctx.message.from.first_name : ""
