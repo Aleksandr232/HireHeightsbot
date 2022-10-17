@@ -31,7 +31,7 @@ await ctx.reply('Используй в чате символ / и откроют
   
 });
 
-bot.on('text',(ctx)=>{
+bot.on('message',(ctx)=>{
   ctx.reply('Чем могу помочь?',Markup.inlineKeyboard([
    [
      Markup.button.callback("Фото", "btn_1"),
