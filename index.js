@@ -10,6 +10,21 @@ const bots = new TelegramBot("5788962599:AAEAxe_dTet2xn9f3FEHfsuJnfJqGnd-Kj0");
 app.use(express.json());
 
 bot.start( async (ctx) => {
+  bot.on('text', async(ctx)=>{
+    try{
+      await ctx.reply('Услуги',Markup.keyboard([
+        ['Вышки-туры', 'Минитрактор'],
+        ['Строительные леса'],
+        ['Уборка снега с крыш'],
+        ['Грузоперевозки'],
+        [Markup.button.webApp('Отправить заявку', webAppUrl )]
+      
+        
+      ]).oneTime().resize())
+      }catch(e){
+        console.log(e)
+      }  
+  })
   await ctx.reply(
     `Привествуем, ${
       ctx.message.from.first_name ? ctx.message.from.first_name : ""
@@ -32,11 +47,10 @@ await ctx.reply('Используй в чате символ / и откроют
 });
 
 
+
+
 bots.on('message', async(msg) => {
   const chatId = msg.chat.id;
-  
-
-
   if(msg?.web_app_data?.data){
       try {
           const data = JSON.parse(msg?.web_app_data?.data)
