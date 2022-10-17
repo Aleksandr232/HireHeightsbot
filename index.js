@@ -7,10 +7,12 @@ const bot = new Telegraf("5788962599:AAEAxe_dTet2xn9f3FEHfsuJnfJqGnd-Kj0");
 const webAppUrl='https://arenda.vercel.app/'
 const app = express();
 const bots = new TelegramBot("5788962599:AAEAxe_dTet2xn9f3FEHfsuJnfJqGnd-Kj0");
+
 app.use(express.json());
 
 bot.start( async (ctx) => { 
   bot.on('text', async (ctx)=>{
+    const chatId = ctx.chat.id;
   if (await ctx.replyWithHTML('<b>Чем могу помочь?</b>',Markup.inlineKeyboard([
      [
        Markup.button.callback("Фото", "btn_1"),
@@ -22,8 +24,23 @@ bot.start( async (ctx) => {
      [Markup.button.callback("Услуги", "btn_5")]
    ])
   ));
-   else{
-    ctx.reply('Привет')
+  if(ctx?.webAppData?.data){
+    try {
+        const data = JSON.parse(ctx?.webAppData?.data)
+        console.log(data)
+        await bot.sendMessage(chatId, 'Спасибо за обратную связь!')
+        await bot.sendMessage(chatId, 'Ваша страна: ' + data?.name);
+        await bot.sendMessage(chatId, 'Ваша улица: ' + data?.surname);
+
+        setTimeout( async() => {
+            await bot.sendMessage(chatId, 'Всю информацию вы получите в этом чате');
+        }, 3000)
+    } catch (e) {
+        console.log(e);
+    }
+
+  }else{
+    /* ctx.reply('Привет') */
    }
 })     
   await ctx.reply(
@@ -46,32 +63,6 @@ await ctx.reply('Используй в чате символ / и откроют
 }  
   
 });
-
-
-
-
-
-
-/* bots.on('message', async(msg) => {
-  const chatId = msg.chat.id;
-  if(msg?.web_app_data?.data){
-      try {
-          const data = JSON.parse(msg?.web_app_data?.data)
-          console.log(data)
-          await bots.sendMessage(chatId, 'Спасибо за обратную связь!')
-          await bots.sendMessage(chatId, 'Ваша страна: ' + data?.name);
-          await bots.sendMessage(chatId, 'Ваша улица: ' + data?.surname);
-
-          setTimeout( async() => {
-              await bots.sendMessage(chatId, 'Всю информацию вы получите в этом чате');
-          }, 3000)
-      } catch (e) {
-          console.log(e);
-      }
-  }
-}); */
-
-
 
 
 
@@ -167,7 +158,7 @@ bot.hears("Контакты", async (ctx) => {
   }
 });
 
-bot.hears("Строительные леса", async (ctx) => {
+bot.hears("🏗Строительные леса🏗", async (ctx) => {
   try {
     await ctx.replyWithPhoto(
       "https://арендавысоты.рф/frontend/img/gallery/adelya-kutuya.jpg"
@@ -206,7 +197,7 @@ bot.hears("Отправить заявку", async (ctx) => {
 
  )});
 
-bot.hears("Вышки-туры", async (ctx) => {
+bot.hears("🏗Вышки-туры🏗", async (ctx) => {
   try {
     ctx.replyWithPhoto(
       "https://арендавысоты.рф/frontend/img/tour-towers/balton-1.jpg"
@@ -220,7 +211,7 @@ bot.hears("Вышки-туры", async (ctx) => {
   }
 });
 
-bot.hears("Уборка снега с крыш", async (ctx) => {
+bot.hears("🧗‍♂️Уборка снега с крыш🧗‍♂️", async (ctx) => {
   try {
     await ctx.replyWithPhoto(
       "https://арендавысоты.рф/frontend/img/snow-removal/header-bg.jpg"
@@ -260,7 +251,7 @@ bot.hears("Лестницы раздвижные", async (ctx) => {
   }
 });
 
-bot.hears("Грузоперевозки", async (ctx) => {
+bot.hears("🚚Грузоперевозки🚚", async (ctx) => {
   try {
     await ctx.replyWithPhoto(
       "https://арендавысоты.рф/frontend/img/main/transport.jpg"
@@ -280,7 +271,7 @@ bot.hears("Грузоперевозки", async (ctx) => {
   }
 });
 
-bot.hears("Минитрактор", async (ctx) => {
+bot.hears("🚜Минитрактор🚜", async (ctx) => {
   try {
     await ctx.replyWithPhoto(
       "https://арендавысоты.рф/frontend/img/main/tractor.jpg"
@@ -440,11 +431,11 @@ bot.action("btn_4", async (ctx) => {
 
 bot.action("btn_5", async (ctx) => {
   await ctx.reply('Используй в чате символ / и откроются доп.возможности', Markup.keyboard([
-    ['Вышки-туры', 'Минитрактор'],
-    ['Строительные леса'],
-    ['Уборка снега с крыш'],
-    ['Грузоперевозки'],
-    [Markup.button.webApp('Отправить заявку', webAppUrl )]
+    ['🏗Вышки-туры🏗', '🚜Минитрактор🚜'],
+    ['🏗Строительные леса🏗'],
+    ['🧗‍♂️Уборка снега с крыш🧗‍♂️'],
+    ['🚚Грузоперевозки🚚'],
+    [Markup.button.webApp('✉️Отправить заявку✉️', webAppUrl )]
   ]).oneTime().resize()) 
 });
 
