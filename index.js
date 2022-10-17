@@ -46,7 +46,7 @@ bot.on('message',(ctx)=>{
 
 
 
-bots.on('message', async(msg) => {
+/* bots.on('message', async(msg) => {
   const chatId = msg.chat.id;
   if(msg?.web_app_data?.data){
       try {
@@ -63,7 +63,7 @@ bots.on('message', async(msg) => {
           console.log(e);
       }
   }
-});
+}); */
 
 
 
