@@ -11,20 +11,16 @@ app.use(express.json());
 
 bot.start( async (ctx) => {
   bot.on('text', async(ctx)=>{
-    try{
-      await ctx.reply('Услуги',Markup.keyboard([
-        ['Вышки-туры', 'Минитрактор'],
-        ['Строительные леса'],
-        ['Уборка снега с крыш'],
-        ['Грузоперевозки'],
-        [Markup.button.webApp('Отправить заявку', webAppUrl )]
-      
-        
-      ]).oneTime().resize())
-      }catch(e){
-        console.log(e)
-      }  
-  })
+      await ctx.reply('Загляни лучше сюда  😉',Markup.inlineKeyboard([
+        [
+          Markup.button.callback("Фото", "btn_1"),
+          Markup.button.callback("Контакты", "btn_2"),
+          Markup.button.callback("Instagram", "btn_3"),
+          Markup.button.webApp("Сайт", "https://xn--80aagge2ckkol0hd.xn--p1ai/%D0%B2%D1%8B%D1%88%D0%BA%D0%B8-%D1%82%D1%83%D1%80%D1%8B"),
+        ],
+        [Markup.button.callback("Услуги", "btn_5"),]
+      ])
+  )})      
   await ctx.reply(
     `Привествуем, ${
       ctx.message.from.first_name ? ctx.message.from.first_name : ""
@@ -433,6 +429,16 @@ bot.action("btn_4", async (ctx) => {
   } catch (e) {
     console.log(e);
   }
+});
+
+bot.action("btn_5", async (ctx) => {
+  await ctx.reply('Используй в чате символ / и откроются доп.возможности', Markup.keyboard([
+    ['Вышки-туры', 'Минитрактор'],
+    ['Строительные леса'],
+    ['Уборка снега с крыш'],
+    ['Грузоперевозки'],
+    [Markup.button.webApp('Отправить заявку', webAppUrl )]
+  ]).oneTime().resize()) 
 });
 
 bot.launch();
