@@ -11,7 +11,7 @@ app.use(express.json());
 
 bot.start( async (ctx) => {
   bot.on('text', async(ctx)=>{
-      await ctx.reply('Чем могу помочь?',Markup.inlineKeyboard([
+      await ctx.reply('Чем могу помочь.?',Markup.inlineKeyboard([
         [
           Markup.button.callback("Фото", "btn_1"),
           Markup.button.callback("Контакты", "btn_2"),
