@@ -15,11 +15,15 @@ bot.start( async (ctx) => {
     const chatId = ctx.chat.id;
   if (await ctx.replyWithHTML('<b>Чем могу помочь?</b>',Markup.inlineKeyboard([
      [
-       Markup.button.callback("📸", "btn_1"),
-       Markup.button.callback("📞", "btn_2"),
-       Markup.button.callback("📱", "btn_3"),
-       Markup.button.webApp("💻", "https://xn--80aagge2ckkol0hd.xn--p1ai/%D0%B2%D1%8B%D1%88%D0%BA%D0%B8-%D1%82%D1%83%D1%80%D1%8B"),
-       Markup.button.callback("📰", "btn_6")
+       Markup.button.callback("Фото📸", "btn_1"),
+       Markup.button.webApp("Сайт💻", "https://xn--80aagge2ckkol0hd.xn--p1ai/%D0%B2%D1%8B%D1%88%D0%BA%D0%B8-%D1%82%D1%83%D1%80%D1%8B"),
+     ],  
+     [
+       Markup.button.callback("На связи📞", "btn_2"),
+       Markup.button.callback("Инста📱", "btn_3")
+     ],
+     [
+       Markup.button.callback("Новости📰", "btn_6")
      ],  
      [Markup.button.callback("Услуги", "btn_5")]
    ])
