@@ -221,7 +221,7 @@ bot.hears("Отправить заявку", async (ctx) => {
   await ctx.reply(
     'Заявка',
     Markup.keyboard([
-    Markup.button.webApp('Отправить заявку', webAppUrl )
+    Markup.button.webApp('✉️Отправить заявку✉️', webAppUrl )
    ])
    .oneTime()
    .resize()
