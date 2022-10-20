@@ -5,6 +5,7 @@ require("dotenv").config();
 const commBot = require("./const");
 const bot = new Telegraf("5788962599:AAEAxe_dTet2xn9f3FEHfsuJnfJqGnd-Kj0");
 const webAppUrl='https://arenda.vercel.app/'
+const exelUrl = 'https://docs.google.com/spreadsheets/d/1_u47neT6PgVhR0jn54GKlYEouNFLtuvF/edit#gid=469668681'
 const app = express();
 const bots = new TelegramBot("5788962599:AAEAxe_dTet2xn9f3FEHfsuJnfJqGnd-Kj0");
 
@@ -59,7 +60,8 @@ await ctx.reply('Используй в чате символ / и откроют
   ['🧗‍♂️Уборка снега с крыш🧗‍♂️'],
   ['🪜Лестницы раздвижные🪜'],
   ['🚚Грузоперевозки🚚'],
-  [Markup.button.webApp('✉️Отправить заявку✉️', webAppUrl )]
+  [Markup.button.webApp('✉️Отправить заявку✉️', webAppUrl )],
+  [Markup.button.webApp('🧮Расчитать стоимость🧮', exelUrl )]
 
   
 ]).oneTime().resize())
