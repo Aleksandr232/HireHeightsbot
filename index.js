@@ -13,8 +13,8 @@ app.use(express.json());
 
 bot.start( async (ctx) => { 
   bot.on('text', async (ctx)=>{
-    const chatId = ctx.chat.id;
-  if (await ctx.replyWithHTML('<b>Чем могу помочь?</b>',Markup.inlineKeyboard([
+    
+  ctx.replyWithHTML('<b>Чем могу помочь?</b>',Markup.inlineKeyboard([
      [
        Markup.button.callback("Фото📸", "btn_1"),
        Markup.button.webApp("Сайт💻", "https://xn--80aagge2ckkol0hd.xn--p1ai/%D0%B2%D1%8B%D1%88%D0%BA%D0%B8-%D1%82%D1%83%D1%80%D1%8B"),
@@ -28,25 +28,8 @@ bot.start( async (ctx) => {
      ],  
      [Markup.button.callback("Услуги", "btn_5")]
    ])
-  ));
-  if(ctx?.webAppData?.data){
-    try {
-        const data = JSON.parse(ctx?.webAppData?.data)
-        console.log(data)
-        await bot.sendMessage(chatId, 'Спасибо за обратную связь!')
-        await bot.sendMessage(chatId, 'Ваша страна: ' + data?.name);
-        await bot.sendMessage(chatId, 'Ваша улица: ' + data?.surname);
-
-        setTimeout( async() => {
-            await bot.sendMessage(chatId, 'Всю информацию вы получите в этом чате');
-        }, 3000)
-    } catch (e) {
-        console.log(e);
-    }
-
-  }else{
-    /* ctx.reply('Привет') */
-   }
+  );
+  
 })     
   await ctx.reply(
     `Привествуем, ${
@@ -70,6 +53,9 @@ await ctx.reply('Используй в чате символ / и откроют
 }  
   
 });
+
+
+
 
 
 
