@@ -454,8 +454,13 @@ bot.command("info", async (ctx) => {
 bot.action("btn_1", async (ctx) => {
   try {
     await ctx.reply(
-      "Вот так они выгядят",
-      Markup.keyboard([["Вышки-туры фото📸", "Строительные леса фото📸"]])
+      "Вот так они выглядят",
+      Markup.keyboard([
+        ["Вышки-туры📸", "Строительные леса📸"],
+        ['Элементы тур и лесов📸'],
+        ['Наша техника📸','Рабочие моменты📸']
+      
+      ])
         .oneTime()
         .resize()
     );
@@ -467,8 +472,12 @@ bot.action("btn_1", async (ctx) => {
 bot.hears("Фото", async (ctx) => {
   try {
     await ctx.reply(
-      "Вот так они выгядят",
-      Markup.keyboard([["Вышки-туры фото📸", "Строительные леса фото📸"]])
+      "Вот так они выглядят",
+      Markup.keyboard([
+        ["Вышки-туры📸", "Строительные леса📸"],
+        ['Элементы тур и лесов📸'],
+        ['Наша техника📸','Рабочие моменты📸']
+      ])
         .oneTime()
         .resize()
     );
@@ -477,9 +486,46 @@ bot.hears("Фото", async (ctx) => {
   }
 });
 
+bot.hears('Элементы тур и лесов📸', async (ctx)=>{
+  try{
+    await ctx.replyWithPhoto({source:'elemturandlesa/1elem.jpg'});
+    await ctx.replyWithPhoto({source:'elemturandlesa/2elem.jpg'});
+    await ctx.replyWithPhoto({source:'elemturandlesa/3elem.jpg'});
+    await ctx.replyWithPhoto({source:'elemturandlesa/4elem.jpg'});
+  }catch(e){
+    console.log(e)
+  }
+})
 
+bot.hears('Наша техника📸', async (ctx)=>{
+  try{
+    await ctx.replyWithPhoto({source:'machine/3tex.jpg'});
+    await ctx.replyWithPhoto({source:'machine/5tex.jpg'});
+    await ctx.replyWithPhoto({source:'machine/6tex.jpg'});
+    await ctx.replyWithPhoto({source:'machine/7tex.jpg'});
+    await ctx.replyWithPhoto({source:'machine/8tex.jpg'});
+    await ctx.replyWithVideo({source:'machine/1tex.mov'});
+    await ctx.replyWithVideo({source:'machine/2tex.mov'});
+  }catch(e){
+    console.log(e)
+  }
+})
 
-bot.hears("Строительные леса фото📸", async (ctx) => {
+bot.hears('Рабочие моменты📸', async (ctx)=>{
+  try{
+    await ctx.replyWithPhoto({source:'workmoments/1work.jpg'});
+    await ctx.replyWithPhoto({source:'workmoments/2work.jpg'})
+    await ctx.replyWithPhoto({source:'workmoments/3work.jpg'})
+    await ctx.replyWithPhoto({source:'workmoments/4work.jpg'})
+    await ctx.replyWithPhoto({source:'workmoments/5work.jpg'})
+    await ctx.replyWithPhoto({source:'workmoments/6work.jpg'})
+    await ctx.replyWithPhoto({source:'workmoments/7work.jpg'})
+  }catch(e){
+    console.log(e)
+  }
+})
+
+bot.hears("Строительные леса📸", async (ctx) => {
   try {
     await ctx.replyWithPhoto(
       "https://арендавысоты.рф/frontend/img/gallery/baumana.jpg"
@@ -511,6 +557,8 @@ bot.hears("Строительные леса фото📸", async (ctx) => {
     await ctx.replyWithPhoto(
       "https://арендавысоты.рф/frontend/img/gallery/peschanyye-kovali.jpg"
     );
+     await ctx.replyWithVideo({source:"lesa/1lesa.mp4"});
+     await ctx.replyWithVideo({source:"lesa/2lesa.mp4"});
   } catch (e) {
     console.log(e);
   }
@@ -518,7 +566,7 @@ bot.hears("Строительные леса фото📸", async (ctx) => {
 
 
 
-bot.hears("Вышки-туры фото📸", async (ctx) => {
+bot.hears("Вышки-туры📸", async (ctx) => {
   try {
     await ctx.replyWithPhoto(
       "https://арендавысоты.рф/frontend/img/gallery/kazan-moll.jpg"
@@ -591,6 +639,8 @@ bot.action("btn_5", async (ctx) => {
 bot.action("btn_6", async (ctx) => {
   await ctx.reply('Мы строим новый склад!!') 
 });
+
+
 
 bot.launch();
 
