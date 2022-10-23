@@ -360,7 +360,7 @@ bot.hears("Лестницы", async (ctx) => {
 bot.hears("🚚Грузоперевозки🚚", async (ctx) => {
   try {
     await ctx.replyWithPhoto(
-      "https://арендавысоты.рф/frontend/img/main/transport.jpg"
+      {source:"machine/15tex.jpg"}
     );
     await ctx.replyWithHTML(
       "<b>Доставим ваш груз массой до 5 тонн в любую точку РТ и ближайшие регионы</b>"
@@ -380,7 +380,7 @@ bot.hears("🚚Грузоперевозки🚚", async (ctx) => {
 bot.hears("Грузоперевозки", async (ctx) => {
   try {
     await ctx.replyWithPhoto(
-      "https://арендавысоты.рф/frontend/img/main/transport.jpg"
+      {source:"machine/15tex.jpg"}
     );
     await ctx.replyWithHTML(
       "<b>Доставим ваш груз массой до 5 тонн в любую точку РТ и ближайшие регионы</b>"
@@ -400,7 +400,7 @@ bot.hears("Грузоперевозки", async (ctx) => {
 bot.hears("🚜Минитрактор🚜", async (ctx) => {
   try {
     await ctx.replyWithPhoto(
-      "https://арендавысоты.рф/frontend/img/main/tractor.jpg"
+      {source:"machine/19tex.jpg"}
     );
     await ctx.replyWithHTML(
       "<b>Выполним весь спектр работ или сдадим в аренду с почасовой или посуточной оплатой. Доставим на объект собственным транспортом</b>"
@@ -418,7 +418,7 @@ bot.hears("🚜Минитрактор🚜", async (ctx) => {
 bot.hears("Минитрактор", async (ctx) => {
   try {
     await ctx.replyWithPhoto(
-      "https://арендавысоты.рф/frontend/img/main/tractor.jpg"
+      {source:"machine/19tex.jpg"}
     );
     await ctx.replyWithHTML(
       "<b>Выполним весь спектр работ или сдадим в аренду с почасовой или посуточной оплатой. Доставим на объект собственным транспортом</b>"
@@ -504,6 +504,19 @@ bot.hears('Наша техника📸', async (ctx)=>{
     await ctx.replyWithPhoto({source:'machine/6tex.jpg'});
     await ctx.replyWithPhoto({source:'machine/7tex.jpg'});
     await ctx.replyWithPhoto({source:'machine/8tex.jpg'});
+    await ctx.replyWithPhoto({source:'machine/9tex.jpg'});
+    await ctx.replyWithPhoto({source:'machine/10tex.jpg'});
+    await ctx.replyWithPhoto({source:'machine/11tex.jpg'});
+    await ctx.replyWithPhoto({source:'machine/12tex.jpg'});
+    await ctx.replyWithPhoto({source:'machine/13tex.jpg'});
+    await ctx.replyWithPhoto({source:'machine/14tex.jpg'});
+    await ctx.replyWithPhoto({source:'machine/15tex.jpg'});
+    await ctx.replyWithPhoto({source:'machine/16tex.jpg'});
+    await ctx.replyWithPhoto({source:'machine/17tex.jpg'});
+    await ctx.replyWithPhoto({source:'machine/18tex.jpg'});
+    await ctx.replyWithPhoto({source:'machine/19tex.jpg'}); 
+    await ctx.replyWithPhoto({source:'machine/20tex.jpg'});
+    await ctx.replyWithPhoto({source:'machine/21tex.jpg'})
     await ctx.replyWithVideo({source:'machine/1tex.mov'});
     await ctx.replyWithVideo({source:'machine/2tex.mov'});
   }catch(e){
