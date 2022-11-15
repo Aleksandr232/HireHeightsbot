@@ -7,6 +7,7 @@ const bot = new Telegraf("5788962599:AAEAxe_dTet2xn9f3FEHfsuJnfJqGnd-Kj0");
 const webAppUrl='https://arenda.vercel.app/'
 const exelUrl = 'https://docs.google.com/spreadsheets/d/1_u47neT6PgVhR0jn54GKlYEouNFLtuvF/edit#gid=469668681'
 const pricesUrl = 'https://pricearenda.vercel.app/'
+const webPort = 'https://newportfolio-sooty-kappa.vercel.app/'
 const app = express();
 const bots = new TelegramBot("5788962599:AAEAxe_dTet2xn9f3FEHfsuJnfJqGnd-Kj0");
 
@@ -121,7 +122,11 @@ bot.help((ctx) => ctx.reply(commBot.commands));
 bot.command("coder", async (ctx) => {
   try {
     await ctx.replyWithContact("+79991625236", "Саша");
-    await ctx.replyWithHTML('<a href="https://newportfolio-sooty-kappa.vercel.app/">Портфолио</a>')
+    await ctx.replyWithHTML('<b>Портфолио</b>', Markup.inlineKeyboard([
+      [
+        Markup.button.webApp("Личный сайт💻", webPort),
+      ],  
+    ]))
   } catch (e) {
     console.error(e);
   }
