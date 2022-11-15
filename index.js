@@ -121,6 +121,7 @@ bot.help((ctx) => ctx.reply(commBot.commands));
 bot.command("coder", async (ctx) => {
   try {
     await ctx.replyWithContact("+79991625236", "Саша");
+    await ctx.replyWithHTML('<a href="https://newportfolio-sooty-kappa.vercel.app/">Портфолио</a>')
   } catch (e) {
     console.error(e);
   }
