@@ -1,15 +1,14 @@
 const { Telegraf, Markup, Composer, Scenes, session } = require("telegraf");
-const  TelegramBot  =  require ( 'node-telegram-bot-api' ) ;
 const express = require('express');
 require("dotenv").config();
 const commBot = require("./const");
 const bot = new Telegraf("5788962599:AAEAxe_dTet2xn9f3FEHfsuJnfJqGnd-Kj0");
-const webAppUrl='https://arenda.vercel.app/'
+const webAppUrl='https://arendavsotiweb.vercel.app/'
 const exelUrl = 'https://docs.google.com/spreadsheets/d/1_u47neT6PgVhR0jn54GKlYEouNFLtuvF/edit#gid=469668681'
 const pricesUrl = 'https://pricearenda.vercel.app/'
 const webPort = 'https://newportfolio-sooty-kappa.vercel.app/'
 const app = express();
-const bots = new TelegramBot("5788962599:AAEAxe_dTet2xn9f3FEHfsuJnfJqGnd-Kj0");
+
 
 app.use(express.json());
 
