@@ -14,7 +14,7 @@ const cron = require("node-cron");
 app.use(express.json());
 
 bot.start(async (ctx) => {
-  cron.schedule("* */5 * * *", () => {
+  cron.schedule("* * */5 * * *", () => {
     ctx.reply(`Привет, ${
       ctx.message.from.first_name ? ctx.message.from.first_name : ""
     } заходи к нам \n
