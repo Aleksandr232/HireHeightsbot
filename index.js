@@ -11,20 +11,6 @@ const webPort = "https://newportfolio-sooty-kappa.vercel.app/";
 const app = express();
 const cron = require("node-cron");
 
-function makeCounter() {
-  let count = 0;
-
-  function counter() {
-    return count++;
-  }
-
-  counter.set = value => count = value;
-
-  counter.decrease = () => count--;
-
-  return counter;
-  
-}
 
 app.use(express.json());
 
