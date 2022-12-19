@@ -10,13 +10,30 @@ const pricesUrl = "https://pricearenda.vercel.app/";
 const webPort = "https://newportfolio-sooty-kappa.vercel.app/";
 const app = express();
 const cron = require("node-cron");
+const axios = require('axios')
 
 
-app.use(express.json());
+
+      const TOKEN ='5784348887:AAEf498gjGd0gXuH6nfJC3KpjV_w1lWsot4';
+      const CHAT_ID = '-1001803523687';
+      const uri_api = `https://api.telegram.org/bot${TOKEN}/sendMessage`;
+
+         
 
 
 
 bot.start(async (ctx) => {
+  function users(){
+    let message =`<b>Кто зашел в бота</b>\n`;
+    message += `<b>бота запустил:</b> ${ctx.message.from.first_name} ${ctx.message.from.last_name} и  @${ctx.message.from.username}\n`;
+    axios.post(uri_api,{
+        chat_id: CHAT_ID,
+        parse_mode: 'html',
+        text: message 
+    })
+    
+}
+  users()
   cron.schedule("10 10 10 * * *", () => {
     ctx.reply(`Привет, ${
       ctx.message.from.first_name ? ctx.message.from.first_name : ""
