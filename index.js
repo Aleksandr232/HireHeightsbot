@@ -8,7 +8,6 @@ const exelUrl =
   "https://docs.google.com/spreadsheets/d/1_u47neT6PgVhR0jn54GKlYEouNFLtuvF/edit#gid=469668681";
 const pricesUrl = "https://pricearenda.vercel.app/";
 const webPort = "https://newportfolio-sooty-kappa.vercel.app/";
-const app = express();
 const cron = require("node-cron");
 const axios = require('axios')
 
