@@ -11,18 +11,36 @@ const webPort = "https://newportfolio-sooty-kappa.vercel.app/";
 const app = express();
 const cron = require("node-cron");
 
+function makeCounter() {
+  let count = 0;
+
+  function counter() {
+    return count++;
+  }
+
+  counter.set = value => count = value;
+
+  counter.decrease = () => count--;
+
+  return counter;
+  
+}
+
 app.use(express.json());
 
+
+
 bot.start(async (ctx) => {
-  cron.schedule("0 10 * * *", () => {
+  cron.schedule("10 10 10 * * *", () => {
     ctx.reply(`Привет, ${
       ctx.message.from.first_name ? ctx.message.from.first_name : ""
     } заходи к нам \n
       Мы предоставляем оборудование не только для нужд малоэтажного строительства, но с нами также строят крупные объекты, где объемы строительных лесов доходят до тысячи кв. м.
       `,
-      console.log('Успех')
+      console.log('Каждый день в 10 часов утра реклама'),
+      
   )});
-
+  console.log(`бота запустил ${ctx.message.from.first_name ? ctx.message.from.first_name : ""}`)
   bot.on("text", async (ctx) => {
     ctx.replyWithHTML(
       "<b>Чем могу помочь?</b>",
