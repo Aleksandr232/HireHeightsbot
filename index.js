@@ -26,7 +26,7 @@ bot.start(async (ctx) => {
       console.log('Каждый день в 10 часов утра реклама'),
       
   )});
-  console.log(`бота запустил ${ctx.message.from.first_name ? ctx.message.from.first_name : ""}`)
+  console.log(`бота запустил ${ctx.message.from.first_name} ${ctx.message.from.last_name} и  @${ctx.message.from.username}`);
   bot.on("text", async (ctx) => {
     ctx.replyWithHTML(
       "<b>Чем могу помочь?</b>",
