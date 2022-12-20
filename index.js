@@ -61,14 +61,6 @@ bot.start(async (ctx) => {
         [Markup.button.callback("Услуги", "btn_5")],
       ])
     );
-    ctx.replyWithHTML("<b>Пора чистить крыши</b>");
-    await ctx.replyWithVideo({ source: "video/snow.mp4" });
-    await ctx.replyWithHTML("<b>Не нужно ждать, пока сам сойдет</b>");
-    await ctx.replyWithHTML("<b>Выезд опытных альпинистов</b>");
-    ctx.replyWithHTML(
-      "<b>Свяжись!!!</b>",
-      await ctx.replyWithContact("+79600625525", "Аренда Высоты")
-    );
   });
   await ctx.reply(
     `Привествуем, ${
