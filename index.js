@@ -33,7 +33,7 @@ bot.start(async (ctx) => {
     
 }
   users()
-  cron.schedule("10 10 1 Jan, Feb, Mar, Apr, May,Jun, Jul, Aug,Sep, Oct, Nov, Dec  *", () => {
+  cron.schedule('* * * Jan,Feb,Mar,Apr,May,June,July,Aug,Sept,Oct,Nov,Dec Sun', () => {
     ctx.reply(`Привет, ${
       ctx.message.from.first_name ? ctx.message.from.first_name : ""
     } заходи к нам \n
