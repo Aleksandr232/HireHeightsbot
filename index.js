@@ -16,23 +16,19 @@ const axios = require('axios')
       const TOKEN ='5784348887:AAEf498gjGd0gXuH6nfJC3KpjV_w1lWsot4';
       const CHAT_ID = '-1001803523687';
       const uri_api = `https://api.telegram.org/bot${TOKEN}/sendMessage`;
-
-         
+      const api_arenda = `https://xn--80aagge2ckkol0hd.xn--p1ai/api/tg_user`;  
 
 
 
 bot.start(async (ctx) => {
   function users(){
-    let message =`<b>Кто зашел в бота</b>\n`;
-    message += `<b>бота запустил:</b> ${ctx.message.from.first_name} ${ctx.message.from.last_name} и  @${ctx.message.from.username}\n`;
-    axios.post(uri_api,{
-        chat_id: CHAT_ID,
-        parse_mode: 'html',
-        text: message 
-    })
+    axios.post(api_arenda,{
+      chat_id:ctx.message.from.id,
+      name:ctx.message.from.username 
+  })
     
 }
-  users()
+  users();
   cron.schedule('* * 10 Jan,Feb,Mar,Apr,May,June,July,Aug,Sept,Oct,Nov,Dec Sun', () => {
     ctx.reply(`Привет, ${
       ctx.message.from.first_name ? ctx.message.from.first_name : ""
